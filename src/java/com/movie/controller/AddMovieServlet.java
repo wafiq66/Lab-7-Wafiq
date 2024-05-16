@@ -57,7 +57,7 @@ public class AddMovieServlet extends HttpServlet {
             if(!errorMsgs.isEmpty()){
                 //to open next page and forward the value
                 request.setAttribute("errorMsgs", errorMsgs);
-                RequestDispatcher view = request.getRequestDispatcher("/add_movie.view");
+                RequestDispatcher view = request.getRequestDispatcher("/add_movie.jsp");
                 view.forward(request,response);
                 return;
             }
@@ -66,12 +66,12 @@ public class AddMovieServlet extends HttpServlet {
             //Generate simple response
             request.setAttribute("movieItem",item);
             //Dispatch to success view
-            RequestDispatcher view = request.getRequestDispatcher("/success.view");
+            RequestDispatcher view = request.getRequestDispatcher("/success.jsp");
             view.forward(request, response);
     }catch(RuntimeException e){
         errorMsgs.add("An unexpedted error: "+e.getMessage());
         request.setAttribute("errorMsgs", errorMsgs);
-        RequestDispatcher view = request.getRequestDispatcher("/add_movie.view");
+        RequestDispatcher view = request.getRequestDispatcher("/add_movie.jsp");
         view.forward(request, response);
     }}
 
